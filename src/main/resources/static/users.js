@@ -15,7 +15,6 @@ $(document).ready(async function() {                                            
 <td>${u.name}</td>
 <td>${u.age}</td>
 <td>${u.email}</td>
-<td>${u.password}</td>
  <td>${rol}</td>
 <td><button class="btn btn-info editbtn" >Edit</button></td>
 <td><button class="btn btn-danger delbtn">Delete</button></td></tr>`;
@@ -67,7 +66,7 @@ $(document).ready(async function () {
 
 
 
-//страница юзера по боковой ссылке, вставится в main-page.html по ссылке
+//страница юзера по боковой ссылке, вставится в admin-page.html по ссылке
 async function lookTablePrincipal() {
     let princ = await fetch("http://localhost:8080/api/info").then(r => r.json());
     $('#centralTable').hide();
@@ -79,7 +78,6 @@ async function lookTablePrincipal() {
 <td>${princ.name}</td>
 <td>${princ.age}</td>
 <td>${princ.email}</td>
-<td>${princ.password}</td>
 <td>${rol}</td></tr>`;
     let tab = `
 <div class="col-10 bg-light vh-150 p-4">
@@ -93,7 +91,6 @@ async function lookTablePrincipal() {
 <th>Username</th>
 <th>Age</th>
 <th>Email</th>
-<th>Password</th>
 <th>Roles</th>
 </thead>         
 <tbody id="tbodyPrincip">${strPr}</tbody>

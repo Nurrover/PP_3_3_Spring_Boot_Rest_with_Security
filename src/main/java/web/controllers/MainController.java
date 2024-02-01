@@ -8,11 +8,11 @@ public class MainController {
 
     @GetMapping("/admin")
     public String adminPage() {
-        return "main-page";
+        return "admin-page";
     }
 
     @GetMapping("/user")
     public String userPage() {
-        return "main-page";
+        return "admin-page";
     }
 }
