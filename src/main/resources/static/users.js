@@ -15,6 +15,7 @@ $(document).ready(async function() {                                            
 <td>${u.name}</td>
 <td>${u.age}</td>
 <td>${u.email}</td>
+<td style="display:none;">${u.password}</td>
  <td>${rol}</td>
 <td><button class="btn btn-info editbtn" >Edit</button></td>
 <td><button class="btn btn-danger delbtn">Delete</button></td></tr>`;
@@ -80,11 +81,11 @@ async function lookTablePrincipal() {
 <td>${princ.email}</td>
 <td>${rol}</td></tr>`;
     let tab = `
-<div class="col-10 bg-light vh-150 p-4">
+<div class="col-11 bg-light vh-150 p-4">
 <h1>User information-page</h1> 
 <div class=" show active border" id="user_panel" role="tabpanel" aria-labelledby="home-tab">
-<td class="bg-white p-0"></td>
-<h4 class=" px-5">About User</h4>
+<td class="bg-white"></td>
+<h4 class="px-5">About User</h4>
 <table class="table table-striped ">
 <thead>
 <th>ID</th>
@@ -151,7 +152,7 @@ $(document).ready(async function () {
 <td>${u.name}</td>
 <td>${u.age}</td>
 <td>${u.email}</td>
-<td>${u.password}</td>
+<td style="display:none;">${u.password}</td>
 <td>${rol}</td>
 <td><button class="btn btn-info editbtn">Edit</button></td>
 <td><button class="btn btn-danger delbtn">Delete</button></td></tr>`;
@@ -195,7 +196,7 @@ $(document).ready(function () {
 <td>${u.name}</td>
 <td>${u.age}</td>
 <td>${u.email}</td>
-<td>${u.password}</td>
+<td style="display:none;">${u.password}</td>
 <td>${rol}</td>
 <td><button class="btn btn-info editbtn">Edit</button></td>
 <td><button class="btn btn-danger delbtn">Delete</button></td></tr>`;
@@ -235,6 +236,25 @@ on(document, 'click', '.editbtn', (e) => {
     $('#emailFormEdit').val(email);
     $('#passwordFormEdit').val(password);
     $('#editModal').modal();
+
+    console.log('-----------------');
+    console.log('-----------------');
+    console.log(father);
+    console.log(id);
+    console.log(name);
+    console.log(age);
+    console.log(email);
+    console.log(password);
+    console.log(role);
+    console.log(rolAr);
+    /*console.log('-----------------');
+    console.log(father.children[0]);
+    console.log(father.children[1]);
+    console.log(father.children[2]);
+    console.log(father.children[3]);
+    console.log(father.children[4]);
+    console.log(father.children[5]);
+    console.log(father.children[6]);*/
 })
 
 
