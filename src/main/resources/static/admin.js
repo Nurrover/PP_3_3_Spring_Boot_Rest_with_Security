@@ -67,7 +67,7 @@ $(document).ready(async function () {
 
 
 
-//страница юзера по боковой ссылке, вставится в admin.html по ссылке
+//страница юзера по боковой ссылке, вставится в main-page.html по ссылке
 async function lookTablePrincipal() {
     let princ = await fetch("http://localhost:8080/api/user/info").then(r => r.json());
     $('#centralTable').hide();
