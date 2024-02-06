@@ -8,10 +8,10 @@ import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
 
-    void add (User user);
+    void addUser(User user);
     List<User> getAllUsers();
-    void delete (Long id);
-    void edit(User user);
-    User getUser(Long id);
-    Optional<User> findByEmail (String email);
+    void deleteUserById(Long id);
+    void editUser(User user);
+    User getUserById(Long id);
+    Optional<User> getUserByEmail(String email);
 }

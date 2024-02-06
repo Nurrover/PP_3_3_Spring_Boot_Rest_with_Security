@@ -4,7 +4,7 @@ const tbody=document.querySelector("#tableBody");                               
 const tableOfUsers=document.querySelector("#tableAllUsers");
 let str="";
 $(document).ready(async function() {                                                 // запускает код, когда ДОМ становится безопасной для работв, эта функция возвращает промис
-    let users=await fetch("http://localhost:8080/api/users").then(r =>r.json());             // заставит ждать до тех пор, пока промис не выполнится
+    let users=await fetch("http://localhost:8080/api/admin/users").then(r =>r.json());             // заставит ждать до тех пор, пока промис не выполнится
     const template = document.querySelector('#product');
     users.forEach((u) => {
         let rol = "";
@@ -26,7 +26,7 @@ $(document).ready(async function() {                                            
 
 //загрузить список ролей
 $(document).ready(async function () {
-    let rolles = await fetch("http://localhost:8080/api/roles").then(r => r.json());         //настройки для fetch можно указать после url
+    let rolles = await fetch("http://localhost:8080/api/admin/roles").then(r => r.json());         //настройки для fetch можно указать после url
     let rol = "";
     rolles.forEach((r) => rol += `<option value="${r.role}">${r.withoutPrefix}</option>`);
     let sel = `<select name="sele" onchange="console.log($('#select').val())" id="select"  
@@ -40,7 +40,7 @@ ${rol}
 
 async function rol(userRol) {
     console.log(userRol);
-    let rolles = await fetch("http://localhost:8080/api/roles").then(r => r.json());
+    let rolles = await fetch("http://localhost:8080/api/admin/roles").then(r => r.json());
     let rol = "";
     for (let n = 0; n < rolles.length; n++) {
         rol += `<option value="${rolles[n].role}">${rolles[n].withoutPrefix}</option>`;
@@ -55,7 +55,7 @@ ${rol}
 
 // доступ на нужную страницу по роли принципала
 $(document).ready(async function () {
-    let principal = await fetch("http://localhost:8080/api/info").then(r => r.json());
+    let principal = await fetch("http://localhost:8080/api/user/info").then(r => r.json());
     for (let i = 0; i < principal.roles.length; i++) {
         if (principal.roles[i].role === 'ROLE_ADMIN') {
             return;
@@ -67,9 +67,9 @@ $(document).ready(async function () {
 
 
 
-//страница юзера по боковой ссылке, вставится в admin-page.html по ссылке
+//страница юзера по боковой ссылке, вставится в admin.html по ссылке
 async function lookTablePrincipal() {
-    let princ = await fetch("http://localhost:8080/api/info").then(r => r.json());
+    let princ = await fetch("http://localhost:8080/api/user/info").then(r => r.json());
     $('#centralTable').hide();
     let rol = "";
     princ.roles.forEach((u) => {
@@ -107,7 +107,7 @@ $('.action').on('click', async function () {
     lookTablePrincipal();
 });
 $(document).ready(async function () {
-    let principal = await fetch("http://localhost:8080/api/info").then(r => r.json());
+    let principal = await fetch("http://localhost:8080/api/user/info").then(r => r.json());
     let rol = "";
     principal.roles.forEach((r) => {
         rol += r.withoutPrefix + "  "
@@ -125,7 +125,7 @@ const passwordCreate = document.getElementById('passwordCreate');
 $(document).ready(async function () {
     $('.btnCreate').on('click', async function (e) {
         e.preventDefault();                                                       // отмена действия браузера для своего события
-        let u = await fetch('http://localhost:8080/api/create', {
+        let u = await fetch('http://localhost:8080/api/admin/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -174,7 +174,7 @@ $(document).ready(function () {
         e.preventDefault();
         let id = idEdit.value;
         let one = document.getElementById(`dele${id}`);
-        let u = await fetch('http://localhost:8080/api/update', {
+        let u = await fetch('http://localhost:8080/api/admin/update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -247,14 +247,6 @@ on(document, 'click', '.editbtn', (e) => {
     console.log(password);
     console.log(role);
     console.log(rolAr);
-    /*console.log('-----------------');
-    console.log(father.children[0]);
-    console.log(father.children[1]);
-    console.log(father.children[2]);
-    console.log(father.children[3]);
-    console.log(father.children[4]);
-    console.log(father.children[5]);
-    console.log(father.children[6]);*/
 })
 
 
@@ -284,7 +276,7 @@ $(document).ready(function () {
         e.preventDefault();
         let id = idValue.value;
         let deleteUser = document.getElementById(`dele${id}`);
-        await fetch(`http://localhost:8080/api/delete/${id}`, {
+        await fetch(`http://localhost:8080/api/admin/delete/${id}`, {
             method: 'DELETE'
         });
         deleteUser.remove();
